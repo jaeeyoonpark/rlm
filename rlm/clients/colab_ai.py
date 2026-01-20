@@ -10,7 +10,7 @@ Usage in Colab:
 
     rlm = RLM(
         backend="colab_ai",
-        backend_kwargs={"model_name": "gemini-2.0-flash"},
+        backend_kwargs={"model_name": "gemini-2.0-flash-lite"},
         environment="local",
         verbose=True,
     )
@@ -31,15 +31,14 @@ class ColabAIClient(BaseLM):
     No API key required - only works within Google Colab environment.
 
     Available models (as of 2025):
-    - gemini-2.0-flash (default)
-    - gemini-2.0-flash-lite
-    - gemini-2.5-flash
-    - gemini-2.5-flash-lite
+    - gemini-2.0-flash-lite (default, recommended)
+    - gemini-2.5-flash (free tier)
+    - gemini-2.5-flash-lite (free tier)
     """
 
     def __init__(
         self,
-        model_name: str = "gemini-2.0-flash",
+        model_name: str = "gemini-2.0-flash-lite",
         **kwargs,
     ):
         super().__init__(model_name=model_name, **kwargs)
