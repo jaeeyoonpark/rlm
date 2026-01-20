@@ -76,6 +76,13 @@ class ColabAIClient(BaseLM):
             model_name=f"google/{model}",
         )
 
+        # Handle None response (API error or rate limit)
+        if response is None:
+            raise RuntimeError(
+                "Colab AI returned None. This may be due to rate limiting, "
+                "content filtering, or a temporary API issue. Please try again."
+            )
+
         self._track_usage(prompt_text, response, model)
         return response
 
