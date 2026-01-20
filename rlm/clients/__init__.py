@@ -57,7 +57,11 @@ def get_client(
         from rlm.clients.azure_openai import AzureOpenAIClient
 
         return AzureOpenAIClient(**backend_kwargs)
+    elif backend == "colab_ai":
+        from rlm.clients.colab_ai import ColabAIClient
+
+        return ColabAIClient(**backend_kwargs)
     else:
         raise ValueError(
-            f"Unknown backend: {backend}. Supported backends: ['openai', 'vllm', 'portkey', 'openrouter', 'litellm', 'anthropic', 'azure_openai', 'gemini', 'vercel']"
+            f"Unknown backend: {backend}. Supported backends: ['openai', 'vllm', 'portkey', 'openrouter', 'litellm', 'anthropic', 'azure_openai', 'gemini', 'vercel', 'colab_ai']"
         )
